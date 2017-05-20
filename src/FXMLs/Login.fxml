@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="281.0" prefWidth="340.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <JFXTextField focusColor="#00acc1" layoutX="57.0" layoutY="72.0" prefHeight="52.0" prefWidth="226.0" promptText="Usuario">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField focusColor="#00acc1" layoutX="57.0" layoutY="141.0" prefHeight="52.0" prefWidth="226.0" promptText="Contraseña">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXButton layoutX="199.0" layoutY="229.0" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #007c91;" text="Ingresar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#007c91" height="76.0" layoutX="-11.0" layoutY="-16.0" stroke="#007c91" strokeLineCap="ROUND" strokeType="INSIDE" width="360.0">
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" color="#a4a0a0" />
+               </effect></Rectangle>
+            <Label layoutX="27.0" layoutY="6.0" prefHeight="36.0" prefWidth="154.0" text="Bienvenido" textFill="WHITE">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
