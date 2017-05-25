@@ -50,11 +50,6 @@
             <DropShadow blurType="GAUSSIAN" />
          </effect>
       </JFXButton>
-      <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="395.0" layoutY="88.0">
-         <image>
-            <Image url="@../../../../../../../../../Desktop/ic_search_black_24dp/web/ic_search_black_24dp_2x.png" />
-         </image>
-      </ImageView>
       <Label layoutX="19.0" layoutY="14.0" text="TICKETS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="39.0" />

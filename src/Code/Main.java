@@ -10,6 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        System.out.println("Conexion establecida exitosamente!");
         Parent root = FXMLLoader.load(getClass().getResource("../FXMLs/Login.fxml"));
         primaryStage.setTitle("Tickets");
         primaryStage.setScene(new Scene(root, 366, 309));
@@ -18,6 +19,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        System.out.println("Esperando conexion del servidor...");
         launch(args);
     }
 }
