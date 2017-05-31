@@ -20,6 +20,8 @@ import java.util.Objects;
 
 public class LoginController {
 
+    public static String mensaje[];
+
     public String usuario, contrasenia;
 
     @FXML
@@ -37,7 +39,7 @@ public class LoginController {
         contrasenia = pwfContraseña.getText();
         if(!Objects.equals(usuario, "") && !Objects.equals(contrasenia, "")) {
             String datos = usuario + ";" + contrasenia;
-            String mensaje[] = VentanaPuertoIPController.c.inicio(datos);
+            mensaje = VentanaPuertoIPController.c.inicio(datos);
             if (!Objects.equals(mensaje[1], "0")) {
                 if (Objects.equals(mensaje[1], "ROJO")) {
                     CrearVentana("../FXMLs/VentanaEmpleadoRojo.fxml", e, "Empleado Categoria Roja");

@@ -39,7 +39,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnReporte" layoutX="14.0" layoutY="90.0" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #ff9d3f;" text="Solicitar Reporte">
+      <JFXButton fx:id="btnReporte" layoutX="14.0" layoutY="90.0" onAction="#SolicitarReporte" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #ff9d3f;" text="Solicitar Reporte">
          <effect>
             <DropShadow blurType="GAUSSIAN" />
          </effect>

@@ -4,6 +4,7 @@ package Controllers;
  * Created by joser on 20/5/2017.
  */
 
+import Controllers.LoginController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.transitions.JFXFillTransition;
@@ -14,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+
+import java.util.Objects;
 
 public class VentanaTicketController {
 
@@ -57,8 +60,18 @@ public class VentanaTicketController {
             paint.setDuration(Duration.seconds(5));
             paint.setRegion(anpTicketWindow);
             paint.setFromValue(Color.WHITE);
-            paint.setToValue(Color.DARKORANGE);
-            paint.play();
+            if(Objects.equals(LoginController.mensaje[1], "ROJO")) {
+                paint.setToValue(Color.RED);
+                paint.play();
+            }
+            else if (Objects.equals(LoginController.mensaje[1], "VERDE")){
+                paint.setToValue(Color.GREENYELLOW);
+                paint.play();
+            }
+            else{
+                paint.setToValue(Color.DARKORANGE);
+                paint.play();
+            }
             cambiarColor = true;
         }
         else{

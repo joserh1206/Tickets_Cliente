@@ -57,4 +57,15 @@ public class VentanaEmpleadoController {
         stage.setResizable(false);
         stage.show();
     }
+
+    @FXML
+    void SolicitarReporte(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../FXMLs/VentanaEstadisticas.fxml"));
+        Parent parent = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.setTitle("Estadisticas");
+        stage.setResizable(false);
+        stage.show();
+    }
 }
