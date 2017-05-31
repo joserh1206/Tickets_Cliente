@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="343.0" style="-fx-background-color: #3b5999;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VentanaPuertoIPController">
+   <children>
+      <Label layoutX="39.0" layoutY="14.0" text="Ingreso al Servidor" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Pane layoutX="-3.0" layoutY="70.0" prefHeight="258.0" prefWidth="350.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <JFXTextField fx:id="txfIP" alignment="CENTER" focusColor="#3b5999" labelFloat="true" layoutX="63.0" layoutY="33.0" prefHeight="45.0" prefWidth="230.0" promptText="IP" />
+            <JFXTextField fx:id="txfPuerto" alignment="CENTER" focusColor="#3b5999" labelFloat="true" layoutX="63.0" layoutY="124.0" prefHeight="45.0" prefWidth="230.0" promptText="Puerto" />
+            <JFXButton fx:id="btnConectar" layoutX="135.0" layoutY="205.0" onAction="#ConectarServer" style="-fx-background-color: #3b5999;" text="Conectar" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" color="#0000007c" />
+               </effect>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
