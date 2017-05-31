@@ -48,7 +48,7 @@
          <font>
             <Font size="13.0" />
          </font></JFXTextField>
-      <JFXButton fx:id="btnAtender" layoutX="583.0" layoutY="88.0" prefHeight="29.0" prefWidth="61.0" style="-fx-background-color: #ff9d3f;" text="Atender">
+      <JFXButton fx:id="btnAtender" layoutX="583.0" layoutY="88.0" onAction="#AtenderTicket" prefHeight="29.0" prefWidth="61.0" style="-fx-background-color: #ff9d3f;" text="Atender">
          <effect>
             <DropShadow blurType="GAUSSIAN" />
          </effect>

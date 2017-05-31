@@ -45,7 +45,7 @@
          </effect>
       </JFXButton>
       <JFXTextField fx:id="txfTicketID" focusColor="#4fb3bf" labelFloat="true" layoutX="428.0" layoutY="72.0" prefHeight="45.0" prefWidth="142.0" promptText="Digite un ID de ticket" unFocusColor="WHITE" />
-      <JFXButton fx:id="btnAtender" layoutX="583.0" layoutY="88.0" prefHeight="29.0" prefWidth="61.0" style="-fx-background-color: #4fb3bf;" text="Atender">
+      <JFXButton fx:id="btnAtender" layoutX="583.0" layoutY="88.0" onAction="#AtenderTicket" prefHeight="29.0" prefWidth="61.0" style="-fx-background-color: #4fb3bf;" text="Atender">
          <effect>
             <DropShadow blurType="GAUSSIAN" />
          </effect>

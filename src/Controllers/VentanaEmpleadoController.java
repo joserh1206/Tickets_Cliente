@@ -44,7 +44,7 @@ public class VentanaEmpleadoController {
 
     @FXML
     void ActualizarTickets(ActionEvent event) {
-        System.out.println("Sirve");
+        System.out.println("Sirve Actualizar Tickets");
     }
 
     @FXML

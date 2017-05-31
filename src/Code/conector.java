@@ -4,40 +4,51 @@ package Code;
  * Created by Jose Luis Rodriguez on 21/5/2017.
  */
 
+import javafx.scene.control.Alert;
+
 import java.net.*;
 import java.io.*;
 import java.util.Objects;
 
 public class conector {
 
-    Socket cliente;
-    int puerto = 9000;
-    String ip = "127.0.0.1";
-    DataInputStream entrada, teclado;
-    DataOutputStream salida;
+    static Socket cliente;
+    int puerto;
+    String ip;
+    static DataInputStream entrada;
+    static DataOutputStream salida;
+
+    public conector(int puerto, String ip){
+        this.puerto = puerto;
+        this.ip = ip;
+    }
+
+    public boolean conectar(){
+        try{
+            cliente = new Socket(ip, puerto);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
+    public void iniciar() throws IOException {
+        entrada = new DataInputStream(cliente.getInputStream());
+        salida = new DataOutputStream(cliente.getOutputStream());
+        System.out.println("Conexion establecida exitosamente!");
+    }
 
     public String[] inicio(String datos){
         try{
-            cliente = new Socket(ip, puerto);
-            entrada = new DataInputStream(cliente.getInputStream());
-            //teclado = new BufferedReader(new InputStreamReader(System.in));
-            //String tec = teclado.readLine();
-            salida = new DataOutputStream(cliente.getOutputStream());
+            String mensaje;
             salida.writeUTF(datos);
-            String mensaje = entrada.readUTF();
-            //System.out.println(mensaje);
-            String mensajes[] = mensaje.split(";");
-            if(Objects.equals(mensajes[0], "Exito"))
-                return mensajes;
-            else if (Objects.equals(mensajes[0], "Fail"))
-                return mensajes;
-            else
-                System.out.println("No mando ni exito ni fail");
-            entrada.close();
+            mensaje = entrada.readUTF();
+
+            /*entrada.close();
             salida.close();
             teclado.close();
-            cliente.close();
-            return mensajes;
+            cliente.close();*/
+            return mensaje.split(";");
         }catch (Exception e){
             String error[] = new String[0];
             System.out.println("Ocurrio un problema con la conexion");
