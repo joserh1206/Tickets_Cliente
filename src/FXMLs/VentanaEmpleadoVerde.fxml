@@ -26,7 +26,7 @@
             <Blend />
          </effect>
       </Rectangle>
-      <JFXButton fx:id="btnDesconectar" layoutX="440.0" layoutY="399.0" prefHeight="29.0" prefWidth="204.0" style="-fx-background-color: #00838f;" text="Desconectar" textFill="WHITE">
+      <JFXButton fx:id="btnDesconectar" layoutX="440.0" layoutY="399.0" onAction="#Desconectar" prefHeight="29.0" prefWidth="204.0" style="-fx-background-color: #00838f;" text="Desconectar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

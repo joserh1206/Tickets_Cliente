@@ -15,8 +15,8 @@ public class conector {
     static Socket cliente;
     int puerto;
     String ip;
-    static DataInputStream entrada;
-    static DataOutputStream salida;
+    public static DataInputStream entrada;
+    public static DataOutputStream salida;
 
     public conector(int puerto, String ip){
         this.puerto = puerto;

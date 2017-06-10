@@ -18,6 +18,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static Code.conector.entrada;
+import static Code.conector.salida;
+
 public class VentanaEmpleadoController {
 
     @FXML
@@ -67,5 +70,14 @@ public class VentanaEmpleadoController {
         stage.setTitle("Estadisticas");
         stage.setResizable(false);
         stage.show();
+    }
+    @FXML
+    void Desconectar(ActionEvent event) throws IOException {
+        String msj = LoginController.mensaje[2]+";Desconectar";
+        salida.writeUTF(msj);
+        entrada.close();
+        salida.close();
+        Stage App_Stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        App_Stage.close();
     }
 }
