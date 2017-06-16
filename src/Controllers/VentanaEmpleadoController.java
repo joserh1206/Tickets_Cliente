@@ -91,10 +91,12 @@ public class VentanaEmpleadoController {
     @FXML
     void AtenderTicket(ActionEvent event) throws IOException {
         id = txfTicketID.getText();
-        for(int i=0; i<ticketsRecibidos.size(); i++){
+        boolean noHay = false;
+        for(int i=0; i<ticketsRecibidos.size(); i++) {
 //            System.out.println("id: "+ticketsRecibidos.get(i).IDTicket.getValue());
-            if(Objects.equals(id, ticketsRecibidos.get(i).IDTicket.getValue())){
+            if (Objects.equals(id, ticketsRecibidos.get(i).IDTicket.getValue())) {
                 asuntoA = ticketsRecibidos.get(i).Asunto.getValue();
+                noHay = true;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../FXMLs/VentanaTicket.fxml"));
                 Parent parent = fxmlLoader.load();
                 Stage stage = new Stage();
@@ -103,14 +105,14 @@ public class VentanaEmpleadoController {
                 stage.setResizable(false);
                 stage.show();
             }
-            else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error con el ID");
-                alert.setHeaderText("Se produjo un error con el ID");
-                alert.setContentText("Por favor ingrese el ID nuevamente, si el error persiste comuniquese" +
-                        " con el encargado del servidor");
-                alert.showAndWait();
-            }
+        }
+        if(!noHay) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error con el ID");
+            alert.setHeaderText("Se produjo un error con el ID");
+            alert.setContentText("Por favor ingrese el ID nuevamente, si el error persiste comuniquese" +
+                    " con el encargado del servidor");
+            alert.showAndWait();
         }
     }
 
@@ -136,6 +138,7 @@ public class VentanaEmpleadoController {
     @FXML
     void Desconectar(ActionEvent event) throws IOException {
         String msj = LoginController.mensaje[2]+";Desconectar";
+        System.out.println(msj);
         salida.writeUTF(msj);
         entrada.close();
         salida.close();
