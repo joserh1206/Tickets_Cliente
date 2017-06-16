@@ -1,8 +1,10 @@
 package Controllers;
 
 /**
- * Created by joser on 20/5/2017.
+ * Created by Jose Luis Rodriguez on 20/5/2017.
+ *
  */
+
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -24,6 +26,9 @@ import java.util.Objects;
 import static Controllers.VentanaTicketController.*;
 
 
+/**
+ * Clase que controla lo que ocurre en la ventana que muestra cada uno de los tickets
+ */
 public class VentanaTicketController {
     public static int msegundos = 0;
     public static int segundos = 0;
@@ -60,6 +65,10 @@ public class VentanaTicketController {
 
     Cronometro c;
 
+    /**
+     * @param event
+     * @throws InterruptedException
+     */
     @FXML
     void Play(MouseEvent event) throws InterruptedException {
 
@@ -93,6 +102,10 @@ public class VentanaTicketController {
         }
     }
 
+    /**
+     * @param event
+     * @throws InterruptedException
+     */
     @FXML
     void PausarCronometro(ActionEvent event) throws InterruptedException {
 //        detener = true;
@@ -101,6 +114,9 @@ public class VentanaTicketController {
 
     }
 
+    /**
+     * @param event
+     */
     @FXML
     void Pendiente(ActionEvent event) {
         msegundos = 0;
@@ -122,6 +138,9 @@ public class VentanaTicketController {
     }
 }
 
+/**
+ * Clase que maneja el hilo para el cronometro de la ventana de los tickets
+ */
 class Cronometro extends Task<String> {
 //    int hora, min, seg, cseg;
 //
@@ -169,6 +188,14 @@ class Cronometro extends Task<String> {
         }
     }
 
+    /**
+     * @param horas
+     * @param minutos
+     * @param segundos
+     * @param msegundos
+     *
+     * Actualiza el label en el que se muestra el cronometro
+     */
     private void actualizarCronometro(int horas, int minutos, int segundos, int msegundos){
         String h, m, s, ms, colon = " : ", tiempo;
         h = String.valueOf(horas);

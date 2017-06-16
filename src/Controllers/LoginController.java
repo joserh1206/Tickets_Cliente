@@ -33,6 +33,10 @@ public class LoginController {
     @FXML
     private JFXButton bntIngresar;
 
+    /**
+     * @param e
+     * @throws IOException
+     */
     @FXML
     void IngresoEmpleado(ActionEvent e) throws IOException {
         usuario = txfUsuario.getText();
@@ -66,6 +70,12 @@ public class LoginController {
         }
     }
 
+    /**
+     * @param ruta
+     * @param event
+     * @param tiulo
+     * @throws IOException
+     */
     private void CrearVentana(String ruta, ActionEvent event, String tiulo) throws IOException {
         Parent VentanaEmpleado_parent = FXMLLoader.load(getClass().getResource(ruta));
         Scene VentanaEmpleado_scene = new Scene(VentanaEmpleado_parent);

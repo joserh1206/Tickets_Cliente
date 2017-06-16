@@ -32,6 +32,10 @@ public class VentanaPuertoIPController {
 
     static conector c;
 
+    /**
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void ConectarServer(ActionEvent event) throws IOException {
         if(!Objects.equals(txfPuerto.getText(), "") && !Objects.equals(txfIP.getText(), "")) {

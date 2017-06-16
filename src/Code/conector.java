@@ -10,6 +10,9 @@ import java.net.*;
 import java.io.*;
 import java.util.Objects;
 
+/**
+ * Clase que controla el socket
+ */
 public class conector {
 
     static Socket cliente;
@@ -18,11 +21,19 @@ public class conector {
     public static DataInputStream entrada;
     public static DataOutputStream salida;
 
+    /**
+     * @constructor
+     * @param puerto
+     * @param ip
+     */
     public conector(int puerto, String ip){
         this.puerto = puerto;
         this.ip = ip;
     }
 
+    /**
+     * @return
+     */
     public boolean conectar(){
         try{
             cliente = new Socket(ip, puerto);
@@ -32,12 +43,19 @@ public class conector {
         }
     }
 
+    /**
+     * @throws IOException
+     */
     public void iniciar() throws IOException {
         entrada = new DataInputStream(cliente.getInputStream());
         salida = new DataOutputStream(cliente.getOutputStream());
         System.out.println("Conexion establecida exitosamente!");
     }
 
+    /**
+     * @param datos
+     * @return
+     */
     public String[] inicio(String datos){
         try{
             String mensaje;
