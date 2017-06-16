@@ -26,12 +26,12 @@
                </effect>
             </Label>
             <JFXTextArea fx:id="txaComentario" layoutX="19.0" layoutY="191.0" prefHeight="161.0" prefWidth="588.0" unFocusColor="BLACK" wrapText="true" />
-            <JFXButton fx:id="btnResuelto" layoutX="19.0" layoutY="369.0" style="-fx-background-color: #002f6c;" text="Resuelto" textFill="WHITE">
+            <JFXButton fx:id="btnResuelto" layoutX="19.0" layoutY="369.0" onAction="#Resuelto" style="-fx-background-color: #002f6c;" text="Resuelto" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnPendiente" buttonType="RAISED" layoutX="527.0" layoutY="369.0" style="-fx-background-color: #7f0000;" text="Pendiente" textFill="WHITE">
+            <JFXButton fx:id="btnPendiente" buttonType="RAISED" layoutX="527.0" layoutY="369.0" onAction="#Pendiente" style="-fx-background-color: #7f0000;" text="Pendiente" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -41,16 +41,8 @@
                   <Image url="@../play.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnPausa" accessibleRole="BUTTON" fitHeight="29.0" fitWidth="37.0" layoutX="520.0" layoutY="14.0">
-               <image>
-                  <Image url="@../pause.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblCsegundos" layoutX="482.0" layoutY="20.0" prefHeight="17.0" prefWidth="28.0" textFill="WHITE" />
-            <Label layoutX="471.0" layoutY="20.0" text=":" textFill="WHITE" />
-            <Label fx:id="lblCminutos" layoutX="435.0" layoutY="20.0" prefHeight="17.0" prefWidth="28.0" textFill="WHITE" />
-            <Label layoutX="426.0" layoutY="20.0" text=":" textFill="WHITE" />
-            <Label fx:id="lblChoras" layoutX="392.0" layoutY="23.0" prefHeight="17.0" prefWidth="28.0" textFill="WHITE" />
+            <Label fx:id="lblCronometro" layoutX="406.0" layoutY="20.0" prefHeight="17.0" prefWidth="111.0" textFill="WHITE" />
+            <JFXButton fx:id="btnPausa" layoutX="516.0" layoutY="16.0" onAction="#PausarCronometro" ripplerFill="BLACK" text="Pausa" textFill="WHITE" />
          </children>
       </Pane>
    </children>

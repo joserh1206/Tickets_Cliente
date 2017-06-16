@@ -4,58 +4,34 @@ package Controllers;
  * Created by joser on 20/5/2017.
  */
 
-import Controllers.LoginController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.transitions.JFXFillTransition;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javafx.event.ActionEvent;
 import java.util.Objects;
 
-class Cronometro extends Task<String> {
+import static Controllers.VentanaTicketController.*;
 
-    /**
-     * Invoked when the Task is executed, the call method must be overridden and
-     * implemented by subclasses. The call method actually performs the
-     * background thread logic. Only the updateProgress, updateMessage, updateValue and
-     * updateTitle methods of Task may be called from code within this method.
-     * Any other interaction with the Task from the background thread will result
-     * in runtime exceptions.
-     *
-     * @return The result of the background work, if any.
-     * @throws Exception an unhandled exception which occurred during the
-     *                   background operation
-     */
-    @Override
-    protected String call() throws Exception {
-        int i = 0;
-        while(i<60){
-            actualizarCronometro(String.valueOf(i));
-            Thread.sleep(100);
-            i++;
-            if(i==60){
-                i = 0;
-            }
-        }
-        return "1";
-    }
-
-    private void actualizarCronometro(String tiempo){
-        updateMessage(tiempo);
-    }
-}
 
 public class VentanaTicketController {
+    public static int msegundos = 0;
+    public static int segundos = 0;
+    public static int minutos = 0;
+    public static int horas = 0;
 
     boolean cambiarColor = false;
+    public static boolean detener = false;
 
 
     @FXML
@@ -77,23 +53,19 @@ public class VentanaTicketController {
     private ImageView btnPlay;
 
     @FXML
-    private ImageView btnPausa;
+    public JFXButton btnPausa;
 
     @FXML
-    private Label lblCsegundos;
+    private Label lblCronometro;
 
-    @FXML
-    private Label lblCminutos;
-
-    @FXML
-    private Label lblChoras;
+    Cronometro c;
 
     @FXML
     void Play(MouseEvent event) throws InterruptedException {
 
-        Cronometro c = new Cronometro();
+        c = new Cronometro();
 
-        lblCsegundos.textProperty().bind(c.messageProperty());
+        lblCronometro.textProperty().bind(c.messageProperty());
 
         new Thread(c).start();
 
@@ -121,4 +93,101 @@ public class VentanaTicketController {
         }
     }
 
+    @FXML
+    void PausarCronometro(ActionEvent event) throws InterruptedException {
+//        detener = true;
+
+        c.cancel(true);
+
+    }
+
+    @FXML
+    void Pendiente(ActionEvent event) {
+        msegundos = 0;
+        segundos = 0;
+        minutos = 0;
+        horas = 0;
+        Stage App_Stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        App_Stage.close();
+    }
+
+    @FXML
+    void Resuelto(ActionEvent event) {
+        msegundos = 0;
+        segundos = 0;
+        minutos = 0;
+        horas = 0;
+        Stage App_Stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        App_Stage.close();
+    }
+}
+
+class Cronometro extends Task<String> {
+//    int hora, min, seg, cseg;
+//
+//    public Cronometro(int h, int m, int s, int cs){
+//        this.hora = h;
+//        this.min = m;
+//        this.seg = s;
+//        this.cseg = cs;
+//    }
+
+
+    /**
+     * Invoked when the Task is executed, the call method must be overridden and
+     * implemented by subclasses. The call method actually performs the
+     * background thread logic. Only the updateProgress, updateMessage, updateValue and
+     * updateTitle methods of Task may be called from code within this method.
+     * Any other interaction with the Task from the background thread will result
+     * in runtime exceptions.
+     *
+     * @return The result of the background work, if any.
+     * @throws Exception an unhandled exception which occurred during the
+     *                   background operation
+     */
+    @Override
+    protected String call() throws Exception {
+        while (true) {
+            if (msegundos > 99) {
+                msegundos = 0;
+                segundos++;
+                if (segundos > 59) {
+                    segundos = 0;
+                    minutos++;
+                    if (minutos > 59) {
+                        horas++;
+                        minutos = 0;
+                        if (horas > 90) {
+                            return "1";
+                        }
+                    }
+                }
+            }
+            actualizarCronometro(horas, minutos, segundos, msegundos);
+            Thread.sleep(10);
+            msegundos++;
+        }
+    }
+
+    private void actualizarCronometro(int horas, int minutos, int segundos, int msegundos){
+        String h, m, s, ms, colon = " : ", tiempo;
+        h = String.valueOf(horas);
+        m = String.valueOf(minutos);
+        s = String.valueOf(segundos);
+        ms = String.valueOf(msegundos);
+        if(horas < 10){
+            h = "0"+horas;
+        }
+        if(minutos < 10){
+            m = "0"+minutos;
+        }
+        if(segundos < 10){
+            s = "0"+segundos;
+        }
+        if(msegundos < 10){
+            ms = "0"+msegundos;
+        }
+        tiempo = h + colon + m + colon + s + colon + ms;
+        updateMessage(tiempo);
+    }
 }
