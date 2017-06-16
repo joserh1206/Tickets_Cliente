@@ -25,11 +25,14 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static Code.conector.entrada;
 import static Code.conector.salida;
 
 public class VentanaEmpleadoController {
+
+    public static String asuntoA;
 
     @FXML
     private JFXButton btnActualizar;
@@ -53,9 +56,10 @@ public class VentanaEmpleadoController {
     private JFXButton btnAtender;
 
     String mensaje;
+    public static String id;
     public String Ticket[];
     public String datosTicket[];
-    ObservableList<TicketsRecibidos> ticketsRecibidos = FXCollections.observableArrayList();
+    public static ObservableList<TicketsRecibidos> ticketsRecibidos = FXCollections.observableArrayList();
 
     /**
      * @param event
@@ -86,13 +90,28 @@ public class VentanaEmpleadoController {
      */
     @FXML
     void AtenderTicket(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../FXMLs/VentanaTicket.fxml"));
-        Parent parent = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(parent));
-        stage.setTitle("Ticket");
-        stage.setResizable(false);
-        stage.show();
+        id = txfTicketID.getText();
+        for(int i=0; i<ticketsRecibidos.size(); i++){
+//            System.out.println("id: "+ticketsRecibidos.get(i).IDTicket.getValue());
+            if(Objects.equals(id, ticketsRecibidos.get(i).IDTicket.getValue())){
+                asuntoA = ticketsRecibidos.get(i).Asunto.getValue();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../FXMLs/VentanaTicket.fxml"));
+                Parent parent = fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(parent));
+                stage.setTitle("Ticket");
+                stage.setResizable(false);
+                stage.show();
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error con el ID");
+                alert.setHeaderText("Se produjo un error con el ID");
+                alert.setContentText("Por favor ingrese el ID nuevamente, si el error persiste comuniquese" +
+                        " con el encargado del servidor");
+                alert.showAndWait();
+            }
+        }
     }
 
     /**
@@ -124,7 +143,6 @@ public class VentanaEmpleadoController {
         App_Stage.close();
     }
     public void mostrarTabla(){
-        ttvTickets.refresh();
         JFXTreeTableColumn<TicketsRecibidos, String> colAsunto = new JFXTreeTableColumn<>("Asunto");
         colAsunto.setPrefWidth(150);
         colAsunto.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TicketsRecibidos, String>, ObservableValue<String>>() {

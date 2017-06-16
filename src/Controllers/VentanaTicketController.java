@@ -6,6 +6,7 @@ package Controllers;
  */
 
 
+import Code.conector;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.transitions.JFXFillTransition;
@@ -21,6 +22,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
 import java.util.Objects;
 
 import static Controllers.VentanaTicketController.*;
@@ -71,6 +74,7 @@ public class VentanaTicketController {
      */
     @FXML
     void Play(MouseEvent event) throws InterruptedException {
+        lblTicket.setText(VentanaEmpleadoController.asuntoA);
 
         c = new Cronometro();
 
@@ -128,7 +132,9 @@ public class VentanaTicketController {
     }
 
     @FXML
-    void Resuelto(ActionEvent event) {
+    void Resuelto(ActionEvent event) throws IOException {
+        String comentario = "Resuelto;"+txaComentario.getText()+";"+VentanaEmpleadoController.asuntoA;
+        conector.salida.writeUTF(comentario);
         msegundos = 0;
         segundos = 0;
         minutos = 0;
